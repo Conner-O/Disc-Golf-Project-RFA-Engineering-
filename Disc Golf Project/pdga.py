@@ -16,12 +16,6 @@ class Course:
 
     def coursePar(self):
         return sum(self.holePar)
-    
-# currentCourse = Course("Stable Run",[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,3,4], "Ames, Iowa", 6174)
-
-# coursePar = currentCourse.coursePar()
-
-# print("Course par is:", coursePar)
 
 class CourseRound:
     def __init__(self,players,datePlayed,coursePlayed,): 
