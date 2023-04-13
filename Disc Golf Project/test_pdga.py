@@ -14,5 +14,45 @@ class TestCourse(unittest.TestCase):
         with self.assertRaises(ValueError):
             course.coursePar()
 
+class TestAddPlayer(unittest.TestCase):
+    def testAddPlayer(self):
+        addPlayer = AddPlayer()
+        addPlayer.addPlayer()
+        self.assertEqual(len(addPlayer.players), 1)
+
+class TestAddCourse(unittest.TestCase):
+    def testAddCourse(self):
+        addCourse = AddCourse()
+        addCourse.addCourse()
+        self.assertEqual(len(addCourse.courses), 1)
+
+class TestUpdateScores(unittest.TestCase):
+    def testUpdateScores(self):
+        player = Player("John", 0, "MPO", 12345)
+        course = Course("Test Course", [3, 4, 5], "Test Location", 10000)
+        roundObj = CourseRound([player], "2022-01-01", course)
+        updateScores = UpdateScores(roundObj)
+        updateScores.updateScores()
+        self.assertEqual(player.scoreCard, [1, 2, 3])
+
+class TestEndRound(unittest.TestCase):
+    def testEndRound(self):
+        player = Player("John", 0, "MPO", 12345)
+        course = Course("Test Course", [3, 4, 5], "Test Location", 10000)
+        roundObj = CourseRound([player], "2022-01-01", course)
+        endRound = EndRound(roundObj)
+        endRound.endRound()
+        self.assertEqual(player.score, 12)
+
+class TestSaveLoadData(unittest.TestCase):
+    def testSaveLoadData(self):
+        player = Player("John", 0, "MPO", 12345)
+        course = Course("Test Course", [3, 4, 5], "Test Location", 10000)
+        roundObj = CourseRound([player], "2022-01-01", course)
+        saveLoadData = SaveLoadData(roundObj)
+        saveLoadData.saveData()
+        loadedRoundObj = saveLoadData.loadData()
+        self.assertEqual(roundObj.__dict__, loadedRoundObj.__dict__)
+
 if __name__ == '__main__':
      unittest.main()
