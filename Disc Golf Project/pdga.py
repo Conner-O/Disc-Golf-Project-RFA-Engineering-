@@ -95,13 +95,14 @@ class SaveLoadData:
 
     def saveData(self):
         fileName = input("Enter file name: ")
-        with open(fileName, "wb") as f:
-            pickle.dump(self.roundObj, f)
+        with open(fileName, "w") as f:
+            f.write(str(self.roundObj.__dict__))
         print("Round saved!")
 
     def loadData(self):
         fileName = input("Enter file name: ")
-        with open(fileName, "rb") as f:
-            loadedRound = pickle.load(f)
+        with open(fileName, "r") as f:
+            roundDict = eval(f.read())
+            loadedRound = RoundClass(**roundDict)
         print("Round loaded!")
         return loadedRound
