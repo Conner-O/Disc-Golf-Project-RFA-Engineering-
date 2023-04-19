@@ -1,11 +1,13 @@
 import pickle
 
+
 class Player:
-    def __init__(self,name,score,division,PDGAnum):
+    def __init__(self, name, score, division, PDGAnum):
         self.name = name
         self.score = score
         self.division = division
         self.PDGAnum = PDGAnum
+
 
 class Course:
     def __init__(self, courseName, holePar, courseLocation, courseLenFt):
@@ -17,8 +19,14 @@ class Course:
     def coursePar(self):
         return sum(self.holePar)
 
+
 class CourseRound:
-    def __init__(self,players,datePlayed,coursePlayed,): 
+    def __init__(
+        self,
+        players,
+        datePlayed,
+        coursePlayed,
+    ):
         self.players = players
         self.datePlayed = datePlayed
         self.coursePlayed = coursePlayed
@@ -28,7 +36,8 @@ class CourseRound:
         for player in self.players:
             total_score += player.score
         return total_score
-    
+
+
 class AddPlayer:
     def __init__(self):
         self.players = []
@@ -66,6 +75,7 @@ class AddCourse:
             courseNames.append(course.courseName)
         return courseNames
 
+
 class UpdateScores:
     def __init__(self, roundObj):
         self.roundObj = roundObj
@@ -73,11 +83,12 @@ class UpdateScores:
     def updateScores(self):
         for player in self.roundObj.players:
             print(f"Enter scores for {player.name}:")
-            scoreCard = []  
+            scoreCard = []
             for i, score in enumerate(player.scoreCard):
                 scoreInput = int(input(f"Hole {i+1}: "))
-                scoreCard.append(scoreInput)  
-            player.setScoreCard(scoreCard)  
+                scoreCard.append(scoreInput)
+            player.setScoreCard(scoreCard)
+
 
 class EndRound:
     def __init__(self, roundObj):
@@ -88,6 +99,7 @@ class EndRound:
         print("Final scores:")
         for player in self.roundObj.players:
             print(f"{player.name}: {player.score}")
+
 
 class SaveLoadData:
     def __init__(self, roundObj):

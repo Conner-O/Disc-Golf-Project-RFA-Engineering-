@@ -8,12 +8,12 @@ class TestCourse(unittest.TestCase):
 
     def test_CourseParEmptyHoles(self):
         course = Course("Empty Course", [], "Test Location", 0)
-        self.assertEqual(course.coursePar(), 0,
-                         "Course par should be 0 for an empty course")
+        self.assertEqual(
+            course.coursePar(), 0, "Course par should be 0 for an empty course"
+        )
 
     def test_CourseParNegativeHoles(self):
-        course = Course("Negative Course",
-                        [-3, 4, -5, 4], "Test Location", 7000)
+        course = Course("Negative Course", [-3, 4, -5, 4], "Test Location", 7000)
         with self.assertRaises(ValueError):
             course.coursePar()
 
@@ -63,5 +63,5 @@ class TestSaveLoadData(unittest.TestCase):
         self.assertEqual(roundObj.__dict__, loadedRoundObj.__dict__)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
